@@ -1,5 +1,7 @@
-![Build Status](https://github.com/leandropadua/weathergenerator-ts/workflows/Node.js%20CI/badge.svg)
 # weathergenerator-ts
+![Build Status](https://github.com/leandropadua/weathergenerator-ts/workflows/Node.js%20CI/badge.svg)
+[![codecov](https://codecov.io/gh/leandropadua/weathergenerator-ts/branch/main/graph/badge.svg?token=M186RNP2FS)](https://codecov.io/gh/leandropadua/weathergenerator-ts)
+
 Typescript version of Weather Generator
 
 ## Quickstart
