@@ -1,0 +1,75 @@
+{
+  "name": "weathergenerator-ts",
+  "version": "1.0.0",
+  "description": "Typescript version of leandropadua/weathergenerator",
+  "files": [
+    "src"
+  ],
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && echo 'build success -' `date`",
+    "clean": "rm -rf ./node_modules && rm -rf ./dist",
+    "watch": "tsc -w",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint --ext .ts .",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandropadua/weathergenerator-ts.git"
+  },
+  "keywords": [
+    "weather",
+    "random",
+    "generator"
+  ],
+  "author": "Leandro Padua",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leandropadua/weathergenerator-ts/issues"
+  },
+  "homepage": "https://github.com/leandropadua/weathergenerator-ts#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "@types/node": "14.11.8",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "jest": "^26.5.3",
+    "lint-staged": "^10.4.0",
+    "npm-check-updates": "^9.1.0",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npx eslint --fix"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "lib/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  }
+}
