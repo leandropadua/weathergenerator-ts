@@ -8,7 +8,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc && echo 'build success -' `date`",
-    "clean": "rm -rf ./node_modules && rm -rf ./dist",
+    "clean": "rm -rf ./node_modules ./dist .iidfile",
     "watch": "tsc -w",
     "test": "jest",
     "test:watch": "jest --watch",
