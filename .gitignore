@@ -19,3 +19,6 @@ node_modules
 
 # Typescript build directory
 dist
+
+# docker iidfile
+.iidfile

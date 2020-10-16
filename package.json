@@ -14,7 +14,10 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint --ext .ts .",
-    "start": "node ."
+    "start": "node .",
+    "predocker:build": "rm .iidfile",
+    "docker:build": "docker build --iidfile .iidfile .",
+    "docker:start": "docker run --rm -it $(cat .iidfile)"
   },
   "repository": {
     "type": "git",
