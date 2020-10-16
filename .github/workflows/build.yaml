@@ -17,3 +17,8 @@ jobs:
     - run: npm run build
     - run: npm run lint
     - run: npm test
+
+    - uses: ziishaned/jest-reporter-action@v0.0.1
+      with:
+        github-token: ${{ secrets.GIT_TOKEN }}
+        test-command: "npm run test:coverage"
