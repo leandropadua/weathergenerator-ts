@@ -1,4 +1,4 @@
-import { hello } from '../src';
+import { hello } from '../lib/hello';
 
 describe('index tests', () => {
   it('says hello', () => {

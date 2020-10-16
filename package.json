@@ -5,10 +5,10 @@
   "files": [
     "src"
   ],
-  "main": "dist/index.js",
+  "main": "dist/bin/index.js",
   "scripts": {
     "build": "tsc && echo 'build success -' `date`",
-    "clean": "rm -rf ./node_modules ./dist .iidfile",
+    "clean": "rm -rf coverage dist node_modules",
     "watch": "tsc -w",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -65,7 +65,7 @@
   },
   "nyc": {
     "include": [
-      "lib/**/*.ts"
+      "src/lib/**/*.ts"
     ],
     "extension": [
       ".ts"
