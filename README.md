@@ -1,6 +1,7 @@
 # weathergenerator-ts
 ![Build Status](https://github.com/leandropadua/weathergenerator-ts/workflows/Node.js%20CI/badge.svg)
 [![codecov](https://codecov.io/gh/leandropadua/weathergenerator-ts/branch/main/graph/badge.svg?token=M186RNP2FS)](https://codecov.io/gh/leandropadua/weathergenerator-ts)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=leandropadua_weathergenerator-ts&metric=alert_status)](https://sonarcloud.io/dashboard?id=leandropadua_weathergenerator-ts)
 
 Typescript version of Weather Generator
 
