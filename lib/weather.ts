@@ -25,7 +25,7 @@ export class Coordinates {
 }
 
 export interface WeatherProps {
-  readonly location: string;
+  readonly city: string;
   readonly coordinates: Coordinates;
   readonly datetime: Date;
   readonly condition: Condition;
@@ -35,14 +35,7 @@ export interface WeatherProps {
 }
 
 export class Weather {
-  /*
-   * Location is an optional label describing one or more positions, Position
-   * is a comma-separated triple containing latitude, longitude, and elevation
-   * in meters above sea level, Local time is an ISO8601 date time, Conditions
-   * is either Snow, Rain, Sunny, Temperature is in °C, Pressure is in hPa,
-   * and Relative humidity is a %.
-   */
-  private readonly location: string;
+  private readonly city: string;
   private readonly coordinates: Coordinates;
   private readonly datetime: Date;
   private readonly condition: Condition;
@@ -51,20 +44,20 @@ export class Weather {
   private readonly humidity: number;
 
   constructor(props: WeatherProps) {
-    (this.location = props.location),
-      (this.coordinates = props.coordinates),
-      (this.datetime = props.datetime),
-      (this.condition = props.condition),
-      (this.temperature = props.temperature),
-      (this.pressure = props.pressure),
-      (this.humidity = props.humidity);
+    this.city = props.city;
+    this.coordinates = props.coordinates;
+    this.datetime = props.datetime;
+    this.condition = props.condition;
+    this.temperature = props.temperature;
+    this.pressure = props.pressure;
+    this.humidity = props.humidity;
   }
   /**
    * Used to print all the fields separated by vertical bars | E.g.
    * Sydney|-33.86,151.21,39|2015-12-23T05:02:12Z|Rain|+12.5|1004.3|97
    */
   toString = (): string =>
-    `${this.location}|\
+    `${this.city}|\
 ${this.coordinates.toString()}|\
 ${dateFormat(this.datetime, "yyyy-mm-dd'T'HH:MM:ss'Z'")}|\
 ${this.condition}|\
