@@ -1,5 +1,5 @@
 import { EarthParameters } from './earthParameters';
-import { Coordinates } from '../weather';
+import { Coordinates, Location } from '../weather';
 import generate from 'project-name-generator';
 
 /**
@@ -14,15 +14,6 @@ const rollDice = () => {
   return randomNumber;
 };
 
-export class Location {
-  readonly name: string;
-  readonly coords: Coordinates;
-  constructor(name: string, coords: Coordinates) {
-    this.name = name;
-    this.coords = coords;
-  }
-}
-
 export const generateLocation = (): Location => {
   const name = generate({ words: rollDice(), number: false })
     .raw.map((s) => s.toString().charAt(0).toUpperCase() + s.toString().slice(1))
@@ -33,5 +24,9 @@ export const generateLocation = (): Location => {
   if (rollDice() === 6) {
     altitude = generateNumber(0, EarthParameters.MAX_ALTITUDE);
   }
-  return new Location(name, new Coordinates({ latitude, longitude, altitude }));
+  return new Location({ name, coords: new Coordinates({ latitude, longitude, altitude }) });
+};
+
+export const randomDate = (start: Date, end: Date): Date => {
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 };
