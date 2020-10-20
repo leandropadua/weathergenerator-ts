@@ -96,7 +96,7 @@ export enum Season {
  * @param season
  */
 export const opositeSeason = (season: Season): Season => {
-  let opposite = season;
+  let opposite;
   switch (season) {
     case Season.AUTUMN:
       opposite = Season.SPRING;
