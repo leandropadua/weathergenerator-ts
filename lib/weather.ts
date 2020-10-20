@@ -95,7 +95,7 @@ export enum Season {
  *
  * @param season
  */
-export const opositeSeason = (season: Season): Season => {
+export const oppositeSeason = (season: Season): Season => {
   let opposite;
   switch (season) {
     case Season.AUTUMN:
@@ -143,5 +143,5 @@ export const getSeason = (latitude: number, date: Date): Season => {
   if (latitude < 0) {
     return aussieSeasons[month];
   }
-  return opositeSeason(aussieSeasons[month]);
+  return oppositeSeason(aussieSeasons[month]);
 };
