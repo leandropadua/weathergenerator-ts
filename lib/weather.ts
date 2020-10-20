@@ -110,9 +110,6 @@ export const oppositeSeason = (season: Season): Season => {
     case Season.WINTER:
       opposite = Season.SUMMER;
       break;
-    default:
-      opposite = season;
-      break;
   }
   return opposite;
 };
