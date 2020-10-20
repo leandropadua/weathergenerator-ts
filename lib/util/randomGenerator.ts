@@ -14,6 +14,11 @@ const rollDice = () => {
   return randomNumber;
 };
 
+/**
+ * Gererate random location
+ * the generated name will have up to 6 words
+ * in at least 5/6 of the cases, the altitude will be less than earth average
+ */
 export const generateLocation = (): Location => {
   const name = generate({ words: rollDice(), number: false })
     .raw.map((s) => s.toString().charAt(0).toUpperCase() + s.toString().slice(1))

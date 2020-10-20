@@ -1,4 +1,11 @@
-import { ConditionPredictor, HumidityPredictor, PressurePredictor, TemperaturePredictor } from '../lib/predictors';
+import {
+  ConditionPredictor,
+  HumidityPredictor,
+  PressurePredictor,
+  TemperaturePredictor,
+  WeatherPredictor,
+} from '../lib/predictors';
+import { generateLocation } from '../lib/util/randomGenerator';
 import { EarthParameters } from '../lib/util/earthParameters';
 import { Condition, Coordinates } from '../lib/weather';
 
@@ -100,5 +107,19 @@ describe('condition predictor', () => {
 
   it('should be sunny when dry and warm', () => {
     expect(ConditionPredictor.predict(10, 30)).toEqual(Condition.SUNNY);
+  });
+});
+
+describe('weather predictor', () => {
+  it('should not be empty', () => {
+    const location = generateLocation();
+    const date = new Date('2015-12-25 0:02:12');
+    const weather = WeatherPredictor.predict(location, date);
+
+    expect(weather.city).not.toBeNull();
+    expect(weather.datetime.getDate()).toEqual(date.getDate());
+    expect(weather.humidity).toBeGreaterThan(0);
+    expect(weather.coordinates).toEqual(location.coords);
+    expect(weather.temperature).toBeGreaterThan(-273); // zero Kelvin
   });
 });

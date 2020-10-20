@@ -49,13 +49,13 @@ export interface WeatherProps {
 }
 
 export class Weather {
-  private readonly city: string;
-  private readonly coordinates: Coordinates;
-  private readonly datetime: Date;
-  private readonly condition: Condition;
-  private readonly temperature: number;
-  private readonly pressure: number;
-  private readonly humidity: number;
+  readonly city: string;
+  readonly coordinates: Coordinates;
+  readonly datetime: Date;
+  readonly condition: Condition;
+  readonly temperature: number;
+  readonly pressure: number;
+  readonly humidity: number;
 
   constructor(props: WeatherProps) {
     this.city = props.city;
