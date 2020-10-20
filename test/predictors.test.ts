@@ -1,4 +1,4 @@
-import { PressurePredictor, TemperaturePredictor } from '../lib/predictors';
+import { HumidityPredictor, PressurePredictor, TemperaturePredictor } from '../lib/predictors';
 import { EarthParameters } from '../lib/util/earthParameters';
 import { Coordinates } from '../lib/weather';
 
@@ -62,5 +62,25 @@ describe('temperature predictor', () => {
 
   it('should be lower at high altitude', () => {
     expect(average(highAltitureTemperatures)).toBeLessThan(average(dayTemperatures));
+  });
+});
+
+describe('humidity predictor', () => {
+  it('should be higher at high temeratures', () => {
+    let humidityHighTemperature = 0;
+    for (let i = 0; i < 100; i++) {
+      const temperature = 30;
+      humidityHighTemperature += HumidityPredictor.predict(EarthParameters.PRESSURE_AT_SEA_LEVEL, temperature);
+    }
+    humidityHighTemperature /= 100;
+
+    let humidityLowTemperature = 0;
+    for (let i = 0; i < 100; i++) {
+      const temperature = 10;
+      humidityLowTemperature += HumidityPredictor.predict(EarthParameters.PRESSURE_AT_SEA_LEVEL, temperature);
+    }
+    humidityLowTemperature /= 100;
+
+    expect(humidityLowTemperature).toBeLessThan(humidityHighTemperature);
   });
 });
