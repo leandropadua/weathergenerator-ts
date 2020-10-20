@@ -1,6 +1,6 @@
-import { HumidityPredictor, PressurePredictor, TemperaturePredictor } from '../lib/predictors';
+import { ConditionPredictor, HumidityPredictor, PressurePredictor, TemperaturePredictor } from '../lib/predictors';
 import { EarthParameters } from '../lib/util/earthParameters';
-import { Coordinates } from '../lib/weather';
+import { Condition, Coordinates } from '../lib/weather';
 
 describe('pressure predictor', () => {
   it('should be sea level pressure when altitude is zero', () => {
@@ -82,5 +82,23 @@ describe('humidity predictor', () => {
     humidityLowTemperature /= 100;
 
     expect(humidityLowTemperature).toBeLessThan(humidityHighTemperature);
+  });
+});
+
+describe('condition predictor', () => {
+  it('should not snow when temperature is positive', () => {
+    expect(ConditionPredictor.predict(0, 5)).not.toEqual(Condition.SNOW);
+  });
+
+  it('should rain when high humidity and positive temperature', () => {
+    expect(ConditionPredictor.predict(100, 10)).toEqual(Condition.RAIN);
+  });
+
+  it('should snow when high humidity and low temperature', () => {
+    expect(ConditionPredictor.predict(100, -10)).toEqual(Condition.SNOW);
+  });
+
+  it('should be sunny when dry and warm', () => {
+    expect(ConditionPredictor.predict(10, 30)).toEqual(Condition.SUNNY);
   });
 });
