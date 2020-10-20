@@ -34,6 +34,11 @@ describe('temperature predictor', () => {
   const nightTemperatures: number[] = [];
   const dayTemperatures: number[] = [];
 
+  const earlyMorning = new Date('2015-12-25 6:00:00');
+  const afternoon = new Date('2015-12-25 15:55:00');
+  const earlyMorningTemperatures: number[] = [];
+  const afternoonTemperatures: number[] = [];
+
   const highLatitudeLocation = new Coordinates({ latitude: 85.0, longitude: 0.0, altitude: 0 });
   const highLatitudeTemperatures: number[] = [];
 
@@ -49,6 +54,8 @@ describe('temperature predictor', () => {
   [...Array(100).keys()].forEach(() => {
     nightTemperatures.push(TemperaturePredictor.predict(zeroLocation, night));
     dayTemperatures.push(TemperaturePredictor.predict(zeroLocation, day));
+    earlyMorningTemperatures.push(TemperaturePredictor.predict(zeroLocation, earlyMorning));
+    afternoonTemperatures.push(TemperaturePredictor.predict(zeroLocation, afternoon));
     highLatitudeTemperatures.push(TemperaturePredictor.predict(highLatitudeLocation, day));
     summerTemperatures.push(TemperaturePredictor.predict(southLocation, summerDaySouth));
     winterTemperatures.push(TemperaturePredictor.predict(southLocation, winterDaySouth));
@@ -57,6 +64,10 @@ describe('temperature predictor', () => {
 
   it('should be lower at night on average', () => {
     expect(average(dayTemperatures)).toBeGreaterThan(average(nightTemperatures));
+  });
+
+  it('should be lower at early morning than afternoon', () => {
+    expect(average(earlyMorningTemperatures)).toBeLessThan(average(afternoonTemperatures));
   });
 
   it('should be lower at high latitude', () => {

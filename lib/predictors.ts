@@ -58,16 +58,13 @@ export abstract class TemperaturePredictor {
   }
 
   static seasonFactor(latitude: number, date: Date): number {
-    let seasonFactor;
+    let seasonFactor = 1.0; // default for spring and autumn
     switch (getSeason(latitude, date)) {
       case Season.SUMMER:
         seasonFactor = 1.5;
         break;
       case Season.WINTER:
         seasonFactor = 0.25;
-        break;
-      default:
-        seasonFactor = 1.0;
         break;
     }
 
