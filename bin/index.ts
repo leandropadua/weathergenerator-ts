@@ -2,7 +2,8 @@ import { WeatherPredictor } from '../lib/predictors';
 import { generateLocation, randomDate } from '../lib/util/randomGenerator';
 
 const yearAgo = new Date(new Date().setFullYear(new Date().getFullYear() - 1));
-const numberToGenerate = isNaN(Number(process.env.NUMBER_TO_GENERATE)) ? 10 : Number(process.env.NUMBER_TO_GENERATE);
+let numberToGenerate = isNaN(Number(process.env.LOCATIONS)) ? 10 : Number(process.env.NUMBER_TO_GENERATE);
+numberToGenerate = numberToGenerate > 1000 ? 1000 : numberToGenerate;
 [...Array(numberToGenerate).keys()].forEach(() => {
   const location = generateLocation();
   const date = randomDate(yearAgo, new Date());

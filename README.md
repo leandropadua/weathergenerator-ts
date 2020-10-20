@@ -8,11 +8,11 @@ Typescript version of Weather Generator
 ## Quickstart
 ```bash
 npm install
-
 npm run build
-
 npm start
 ```
+Set env var `LOCATIONS` to specify the number of locations to generate at a time.
+The default is `10` and the maximum is `1000`.
 
 ## Test and Linting
 ```bash
