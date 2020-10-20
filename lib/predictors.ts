@@ -57,7 +57,13 @@ export abstract class TemperaturePredictor {
     return temperature;
   }
 
-  static seasonFactor(latitude: number, date: Date): number {
+  /**
+   * Parse season for latitude and time to increase temperature in summer
+   * and drop during winter.
+   * @param latitude
+   * @param date
+   */
+  private static seasonFactor(latitude: number, date: Date): number {
     let seasonFactor = 1.0; // default for spring and autumn
     switch (getSeason(latitude, date)) {
       case Season.SUMMER:
@@ -79,7 +85,7 @@ export abstract class TemperaturePredictor {
    * @param date
    * @return factor to multiply temperature
    */
-  static timeOfDayFactor(date: Date): number {
+  private static timeOfDayFactor(date: Date): number {
     const hour = date.getHours();
     let timeOfDayFactor = 1.0;
 
@@ -110,7 +116,7 @@ export abstract class TemperaturePredictor {
    * @param latitude latitude in degrees
    * @return temperature drop as negative number
    */
-  static latitudeFactor(latitude: number): number {
+  private static latitudeFactor(latitude: number): number {
     let drop = 0;
     let positiveLatitude = Math.abs(latitude);
     let dropFactor = 5;
@@ -131,7 +137,7 @@ export abstract class TemperaturePredictor {
    * @param altitude altitude in meters
    * @return temperature drop as negative number
    */
-  static altitudeFactor(altitude: number): number {
+  private static altitudeFactor(altitude: number): number {
     return (-altitude * 4) / 1000;
   }
 }
